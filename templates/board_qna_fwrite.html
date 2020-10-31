@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Demacia</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="static/img/favicon.png" rel="icon">
+    <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="static/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
+        <div class="container d-flex">
+            <div class="contact-info mr-auto">
+                <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">demacia@naver.com</a>
+                <i class="icofont-phone"></i> +051 020 0430
+            </div>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                <a href="#" class="skype"><i class="icofont-skype"></i></a>
+                <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo mr-auto"><a href="index.html">Demacia</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo mr-auto"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                  <li class="active"><a href="{{ url_for('index')}}">메인</a></li>
+        
+                  {% if 'user' in session %}
+                  <li><a href="{{ url_for('duo')}}">듀오 매칭</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login')}}">듀오 매칭</a></li>
+                  {% endif %}
+                  
+                  <li><a href="{{ url_for('board_qna')}}">문의사항</a></li>
+        
+                  {% if 'user' in session %}
+                  <li><a href="{{ url_for('pro')}}">프로필 작성</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login')}}">프로필 작성</a></li>
+                  {% endif %}
+        
+                  {% if 'user' in session %}
+                  <li><a href="{{ url_for('logout')}}">로그아웃</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login')}}">로그인</a></li>
+                  {% endif %}
+        
+                  {% if 'user' not in session %}
+                  <li><a href="{{ url_for('sign')}}">회원가입</a></li>
+                  {% endif %}
+                </ul>
+              </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+            <h1>Demacia</h1>
+            <h2>데마시아 팀, 예시용 웹 사이트</h2>
+            <a href="#about" class="btn-get-started scrollto">GAME START</a>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+
+                <div class="section-title">
+                    <span>커뮤니티</span>
+                    <h2>커뮤니티</h2>
+                </div>
+
+                <div class="row" data-aos="fade-up">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">QnA</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mt-2 gg-home-duorequest">
+                    <div class="card-body">
+                        <form action="/fwrite" name="fwrite" method="post">
+                            <!-- 제목 -->
+                            <div style="display: flex;">
+                                <input style="
+                                width: 98%;
+                                background-image: url('../js/wrest.gif');
+                                background-position: right top;
+                                background-repeat: no-repeat;
+                                " name="title" id="title" itemname="제목" required="" value="제목을 입력해주세요."
+                                    class="mw_basic_text" />
+                            </div>
+                            <hr style="margin-top: 0;" />
+                            <!-- 내용 -->
+                            <div style="min-height: 30px">
+                                <textarea id="content" name="content" style="
+                                width: 98%;
+                                word-break: break-all;
+                                background-image: url('../js/wrest.gif');
+                                background-position: right top;
+                                background-repeat: no-repeat;
+                                " rows="10" itemname="내용" required="" class="mw_basic_textarea"></textarea>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <!-- 날짜 -->
+                                <div class="d-flex gg-sub-description">
+
+                                </div>
+                                <div>
+                                    <!-- 작성자 -->
+
+                                </div>
+                            </div>
+                            <hr style="margin-bottom: 0;" />
+
+                            <div>
+                                <!-- SWF업로더 시작-->
+                                <!-- SWF업로더 끝 -->
+
+                                <!-- 지업로더 시작-->
+                                <!-- 지업로더 끝 -->
+
+                                <tr>
+                                    <td colspan="2" height="1" background-color="#e7e7e7"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="mw_basic_write_content">
+                                        <table id="variableFiles" style="margin:  1rem;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input type="file" id="attch" name="attch"
+                                                            title="파일 용량 102,476,800 바이트 이하만 업로드 가능"
+                                                            class="mw_basic_text" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <script type="text/javascript">
+                                            var flen = 0;
+                                            function add_file(delete_code) {
+                                                var upload_count = 0;
+                                                if (upload_count && flen >= upload_count) {
+                                                    alert(
+                                                        "이 게시판은 " +
+                                                        upload_count +
+                                                        "개 까지만 파일 업로드가 가능합니다."
+                                                    );
+                                                    return;
+                                                }
+
+                                                var objTbl;
+                                                var objRow;
+                                                var objCell;
+                                                if (document.getElementById)
+                                                    objTbl = document.getElementById("variableFiles");
+                                                else objTbl = document.all["variableFiles"];
+
+                                                objRow = objTbl.insertRow(objTbl.rows.length);
+                                                objCell = objRow.insertCell(0);
+
+                                                objCell.innerHTML =
+                                                    "<input type='file' id=bf_file_" +
+                                                    flen +
+                                                    " name='bf_file[]' title='파일 용량 102,476,800 바이트 이하만 업로드 가능' class=mw_basic_text>";
+
+                                                /*
+                                                                        str = "<input type='file' id=bf_file_" + flen + " name='bf_file[]' title='파일 용량 102,476,800 바이트 이하만 업로드 가능' class=mw_basic_text> ";
+                                                                        str+= " <input type='button' value='본문에 넣기' onclick=\"document.getElementById('wr_content').value += '{이미지:" + flen + "}'\"";
+                                                                        objCell.innerHTML = str;
+                                                                        */
+
+                                                if (delete_code) objCell.innerHTML += delete_code;
+                                                else {
+                                                }
+
+                                                flen++;
+                                            }
+
+                                            add_file("");
+
+                                            function del_file() {
+                                                // file_length 이하로는 필드가 삭제되지 않아야 합니다.
+                                                var file_length = 0;
+                                                var objTbl = document.getElementById("variableFiles");
+                                                if (objTbl.rows.length - 1 > file_length) {
+                                                    objTbl.deleteRow(objTbl.rows.length - 1);
+                                                    flen--;
+                                                }
+                                            }
+                                        </script>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" height="1" background-color="#e7e7e7"></td>
+                                </tr>
+
+                                <details>
+                                    <summary>비밀번호</summary>
+                                    <!-- 비밀번호 -->
+                                    <div style="display: flex;">
+                                        <span style="margin: 0.5rem;">비밀번호 입력 :</span>
+                                        <input style="
+                                        width: 20%;
+                                        background-image: url('../js/wrest.gif');
+                                        background-position: right top;
+                                        background-repeat: no-repeat;
+                                        margin: 0.5rem 0;
+                                        " type="password" name="lock_password" id="lock_password" itemname="비밀번호" required="" value=""class="mw_basic_text" />
+                                    </div>
+                                </details>
+
+                                <td width="100%" text-align="center" valign="top">
+                                    <input type="submit" id="submit" border="0"
+                                        style="width: 100%; background-color: #ffffff;" accesskey="s" />
+                                </td>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-info">
+                            <h3>DEMACIA</h3>
+                            <p>
+                                부산 해운대구 센텀중앙로 55, <br>
+                                경남정보대학교<br><br>
+                                <strong>Phone:</strong> +051 020 0430<br>
+                                <strong>Email:</strong> demacia@naver.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Main Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">듀오매칭</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">아이템 거래소</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">전적 검색</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">커뮤니티</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="https://www.op.gg/">op.gg</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>해시태그</h4>
+                        <p>원하는 단어로 간편하게 검색을 할 수 있는 <br>해시태그 검색창 예시용</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; <strong><span>DEMACIA</span></strong>, 예시용 사이트
+
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+                    Designed by <a href="https://bootstrapmade.com/">DEMACIA</a>
+                </div>
+            </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="static/vendor/php-email-form/validate.js"></script>
+    <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="static/vendor/venobox/venobox.min.js"></script>
+    <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="static/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="static/js/main.js"></script>
+
+</body>
+
+</html>

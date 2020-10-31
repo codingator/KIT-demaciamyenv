@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block title %}자유게시판{% endblock %}
+{% block head %}
+    {{ super() }}
+    
+{% endblock %}
+{% block content %}
+    
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+  
+          <div class="section-title">
+            <span>커뮤니티</span>
+            <h2>커뮤니티</h2>
+          </div>
+  
+          <div class="row" data-aos="fade-up">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
+                <li data-filter="*" class="filter-active">자유게시판</li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="card mt-2 gg-home-duorequest">
+            <div class="card-body">
+              <a a class="text-light" href="{{ url_for('.board_qna_fwrite_page') }}">게시글 작성</a>
+  
+            </div>
+          </div>
+  
+          <div class="d-flex justify-content-between flex-wrap mt-1">
+            {% for selet_result in selet_results %}
+            <!-- 목록 -->
+  
+            <div class="card mt-2 gg-home-duorequest">
+              <div class="card-body">
+                <!-- 제목 -->
+                <div style="display: flex;">
+                  {{selet_result.title}}
+                  <!--% if select_result.board_id == 접속자 아이디 % / % endif %-->
+                  <form action="/delete" method="post" style="margin-left: auto;">
+                      <input type="hidden" class="form-control" name="idx" value="{{selet_result.idx}}">
+                      <button class= "btn btn-link" type="submit">삭제</button>
+                  </form>
+                </div>
+                <hr style="margin-top: 0;" />
+                <!-- 내용 -->
+                <div style="min-height: 30px">
+                  <p>{{selet_result.content}}</p>
+                </div>
+                <hr style="margin-bottom: 0;" />
+                <div class="d-flex align-items-center justify-content-between">
+                  <!-- 날짜 -->
+                  <div class="d-flex gg-sub-description">
+                    {{selet_result.created.strftime('%Y-%m-%d')}}
+                  </div>
+                  <div>
+                    <!-- 작성자 -->
+                    <a class="text-light" href="/kr/profile/{{selet_result.email}}">
+                      <!-- 유저 찾기 -->
+                      {{selet_result.user_name}}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            {% endfor %}
+          </div>
+        </div>
+      </section><!-- End Portfolio Section -->
+{% endblock %}

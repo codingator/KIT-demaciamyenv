@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>임시용</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style>
+	  body{
+		  background-image: url(static/demacia.png);
+		  
+		  
+	  }
+  </style>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="index.html">임시용</a>
+    </li>
+    <li class="nav-item">
+		{% if 'user' in session %}
+	  <a class="nav-link" href="{{ url_for('logout')}}">로그아웃</a>
+		{% else %}
+	  <a class="nav-link" href="{{ url_for('login')}}">로그인</a>
+	    {% endif %}			
+	</li>
+	<li class="nav-item">
+		{% if 'user' in session %}
+		{% else %}
+		<a class="nav-link" href="{{ url_for('sign')}}">회원가입</a>
+		{% endif %}
+
+	  </li>
+	  <li class="nav-item">
+		{% if 'user' in session %}
+		<a class="nav-link" href="{{ url_for('pro')}}">프로필</a>
+		{% else %}
+		{% endif %}
+	  </li>
+	  <li class="nav-item">
+		{% if 'user' in session %}
+	  <a class="nav-link" href="{{ url_for('duo')}}">듀오매칭</a>
+		{% else %}
+	  <a class="nav-link" href="{{ url_for('login')}}">듀오매칭</a>
+	    {% endif %}			
+	</li>
+	<li class="nav-item">
+		{% if 'user' in session %}
+	  <a class="nav-link" href="{{ url_for('logout')}}">아이템거래소</a>
+		{% else %}
+	  <a class="nav-link" href="{{ url_for('login')}}">아이템거래소</a>
+	    {% endif %}			
+	</li>
+	<li class="nav-item">
+		{% if 'user' in session %}
+	  <a class="nav-link" href="{{ url_for('logout')}}">커뮤니티</a>
+		{% else %}
+	  <a class="nav-link" href="{{ url_for('login')}}">커뮤니티</a>
+	    {% endif %}			
+	</li>
+
+	<li class="nav-item">
+		
+	  <a class="nav-link" href="{{ url_for('dema')}}">데마시아</a>
+			
+	</li>
+
+   
+  
+  </ul>
+</nav>
+
+
+
+
+
+</body>
+</html>

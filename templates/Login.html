@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko_KR" dir="ltr">
+    <head>
+        <title>데마시아 로그인 - 회원가입 페이지</title>
+        <meta charset = "utf-8">
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js charset="utf-8"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v7.0&appId=726386558102918&autoLogAppEvents=1"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style11.css') }}" type="text/css">
+    </head>
+    <body>
+        
+        
+        <section class="container">
+            <form action="/login" class="login-form" method="POST">
+                <p>간편 로그인</p>
+                <fb:login-button 
+                     class="fb-login-button"
+                     data-size = "large"
+                     data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""
+                     scope="public_profile,email"
+                     onlogin="checkLoginState();">
+                 </fb:login-button>
+                <hr value="or">
+                <p>이메일로 로그인</p>
+                <div class="txtb">
+                    <input type="text" name = "email">
+                    <span data-placeholder="이메일 주소"></span>
+                </div>
+
+                <div class="txtb">
+                    <input type="Password" name = "password">
+                    <span data-placeholder="비밀번호"></span>
+                </div>
+                <div class="chk">
+                    <input type="checkbox" name="chk_info" value="로그인 상태 유지">로그인 상태 유지
+                    <a href="finPassword.html">비밀번호 찾기</a>
+                </div>
+                <div>
+                </div>
+                <input type="submit" class="logbtn" value="로그인">
+                <div class="bottom-text">
+                    아이디가 없으신가요? <a href="{{ url_for('sign')}}">회원가입</a>
+                </div>
+            </form>
+        </section>
+
+        <script type="text/javascript">
+        $(".txtb input").on("focus",function(){
+            $(this).addClass("focus");
+        });
+        $(".txtb input").on("blur",function(){
+            if($(this).val() == "")
+            $(this).removeClass("focus");
+        });
+        </script>
+
+        <script>
+            window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '875126219659469',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v7.0'
+            });
+                
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+
+                
+                            
+            };
+        
+            (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            
+
+            function checkLoginState() {
+            FB.getLoginStatus(function(response) 
+                {
+                statusChangeCallback(response);
+                });
+            }
+
+            FB.getLoginStatus(function(response) {
+                    if(response.status === 'connected') {
+                        document.querySelector('#authBtn').value = "Logout";
+                    } else {
+                        document.querySelector('#authBtn').value = "Login";
+                    }
+                })
+            
+        </script> 
+    </body>
+</html>

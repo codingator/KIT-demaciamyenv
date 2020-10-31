@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>데마시아 로그인 - 회원가입 페이지</title>
+        <meta chartset = "utf-8">
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js charset="utf-8"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style4.css') }}" type="text/css">
+    </head>
+    <body>
+      
+
+        <section class="container">
+            <form action="/cer" class="login-form" method="POST">
+                <p>이메일 인증 안내</p>
+                <div> 이메일(으)로 인증번호를 보내 드렸습니다. 이메일을 확이해주세요.</div>
+                <div class="txtb">
+                    <input type="text" name = 'cernum'>
+                    <span data-placeholder="인증 번호"></span>
+                </div>
+
+               
+                <div>
+                </div>
+                <a href = "tem/Login.html">
+                <input type="submit" class="logbtn" value="확인">
+                </a>
+                <div class="bottom-text">
+                     <a href="Login.html">로그인으로 돌아가기</a>
+                </div>
+            </form>
+        </section>
+
+        <script type="text/javascript">
+        $(".txtb input").on("focus",function(){
+            $(this).addClass("focus");
+        });
+        $(".txtb input").on("blur",function(){
+            if($(this).val() == "")
+            $(this).removeClass("focus");
+        });
+        </script>
+
+
+
+
+
+
+        
+    </body>
+</html>

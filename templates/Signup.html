@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>데마시아 로그인 - 회원가입 페이지</title>
+        <meta charset = "utf-8">
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js charset="utf-8"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}" type="text/css">
+    </head>
+    <body>
+       
+
+        <section class="container">
+            <form action="/sign" class="login-form" method = "POST">
+                <p>기본정보입력</p>
+                <div id="notice">
+                    회원가입을 위해서 이메일 인증이 진행되며, 인증이 완료되기 전까지 회원가입이 완료가 되지 않습니다.
+                </div>
+                <div class="txtb">
+                    <input type="text" name = "email">
+                    <span data-placeholder="이메일 주소"></span>
+                </div>
+
+                <div class="txtb">
+                    <input type="Password" name = "password">
+                    <span data-placeholder="비밀번호"></span>
+                </div>
+                <div class="txtb">
+                    <input type="NickName" name = "name">
+                    <span data-placeholder="닉네임"></span>
+                </div>
+                <input type="submit" class="logbtn" value="가입하기">
+
+                <a href="Login.html"><input type="submit" class="logbtn2" value="취소"></a>
+            
+                <div class="bottom-text">
+                    이미 회원이신가요? <a href="{{ url_for('login')}}">로그인</a>
+                </div>
+            </form>
+        </section>
+
+        <script type="text/javascript">
+        $(".txtb input").on("focus",function(){
+            $(this).addClass("focus");
+        });
+        $(".txtb input").on("blur",function(){
+            if($(this).val() == "")
+            $(this).removeClass("focus");
+        });
+        </script>
+
+
+
+
+
+
+        <h2>4/28, 4/29</h2>
+    </body>
+</html>

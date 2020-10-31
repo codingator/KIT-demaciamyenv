@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Demacia</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">demacia@naver.com</a>
+        <i class="icofont-phone"></i> +051 020 0430
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="index.html">Demacia</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="index.html">메인</a></li>
+
+          
+          <li><a href="{{ url_for('duo')}}">듀오 매칭</a></li>
+          
+          {% if 'user' in session %}
+          <li><a href="{{ url_for('board_qna')}}">문의사항</a></li>
+          {% else %}
+          <li><a href="{{ url_for('login')}}">문의사항</a></li>
+          {% endif %}
+
+          {% if 'user' in session %}
+          <li><a href="{{ url_for('pro')}}">프로필 작성</a></li>
+          {% else %}
+          <li><a href="{{ url_for('login')}}">프로필 작성</a></li>
+          {% endif %}
+
+          {% if 'user' in session %}
+          <li><a href="{{ url_for('logout')}}">로그아웃</a></li>
+          {% else %}
+          <li><a href="{{ url_for('login')}}">로그인</a></li>
+          {% endif %}
+
+          {% if 'user' not in session %}
+          <li><a href="{{ url_for('sign')}}">회원가입</a></li>
+          {% endif %}
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      <h1>Demacia</h1>
+      <h2>데마시아 팀, 예시용 웹 사이트</h2>
+      <a href="#about" class="btn-get-started scrollto">GAME START</a>
+    </div>
+  </section><!-- End Hero -->
+
+<!--Main layout-->
+<main class="mt-5 pt-5">
+    <div class="container">
+
+        <!--Section: Post-->
+        <section class="mt-4">
+
+            <!--Grid row-->
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-8 mb-4">
+
+
+
+                    <!--Card-->
+                    <div class="card mb-4 wow fadeIn">
+
+                        <div class="card-header font-weight-bold">
+                            <span> </span>
+                            
+
+                        </div>
+
+                        <!--Card content-->
+                       
+
+                  
+                    <!--/.Card-->
+
+
+
+                    <!--Card-->
+                    
+
+                        <div class="card-header font-weight-bold">
+                            <span>듀오매칭 글</span>
+                            
+                        </div>
+
+                        <!--Card content-->
+                        
+                        <div class="card-body">
+
+                            <div class="media d-block d-md-flex mt-3">
+                                <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                                    <h5 class="mt-0 font-weight-bold">제목: </h5>
+                                    <p>LOL닉네임: {{ data[1]}}</p>
+                                    {% if data[3] == '아이언' %}
+                                    <strong>플레이어 정보: <img width= 90px src="static/아이언.png" name = "iron"></strong>
+                                    {% elif data[3] == '브론즈' %}
+                                    <strong>플레이어 정보: <img width= 90px src="static/브론즈.png" name = "bronze"></strong>
+                                    {% elif data[3] == '실버' %}
+                                    <strong>플레이어 정보: <img width= 70px src="static/실버.png" name = "silver"></strong>
+                                    {% elif data[3] == '골드' %}
+                                    <strong> <img width= 90px src="static/골드.png" name = "gold"></strong>
+                                    {% elif data[3] == '플레' %}
+                                    <strong> <img width= 90px src="static/플레.png" name = "ple"></strong>
+                                    {% elif data[3] == '다이아' %}
+                                    <strong> <img width= 90px src="static/다이아.png" name = "di"></strong>
+                                    {% elif data[3] == '마스터' %}
+                                    <strong> <img width= 90px src="static/마스터.png" name = "ma"></strong>
+                                    {% elif data[3] == '그마' %}
+                                    <strong> <img width= 90px src="static/골드.png" name = "gma"></strong>
+                                    {% endif %}
+
+                                    {% if data[4] == '탑' %}
+                                    <strong><img width= 70px src="static/탑.png" name = "top"> </strong>
+                                    {% elif data[4] == '정글' %}
+                                    <strong> <img width= 90px src="static/정글.png" name = "jung"></strong>
+                                    {% elif data[3] == '미드' %}
+                                    <strong> <img width= 90px src="static/미드.png" name = "mid"></strong>
+                                    {% elif data[3] == '원딜' %}
+                                    <strong> <img width= 90px src="static/원딜.png" name = "AD"></strong>
+                                    {% elif data[3] == '서폿' %}
+                                    <strong> <img width= 90px src="static/서폿.png" name = "su"></strong>
+                                    {% endif %}
+
+                                    
+                                    {% if data[6] == 'o' %}
+                                    <strong><img width= 90px src="static/mic.png" name = "mic"> </strong>
+                                    {% elif data[6] == 'x' %}
+                                    <strong><img width= 70px src="static/nomic.png" name = "nomic"> </strong>
+                                    {% endif %}
+                                    
+                                    {% if data[7] == '남' %}
+                                    <strong><img width= 70px src="static/남자.png" name = "man"> </strong><br><br>
+                                    {% elif data[7] == '여' %}
+                                    <strong><img width= 70px src="static/여자.png" name = "woman"> </strong><br><br>
+                                    {% endif %}
+                                    <h5 class="mt-0 font-weight-bold">내용: </h5>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        
+                        
+                       
+                        
+                        
+                        
+                        
+                        
+
+                    </div>
+                    <!--/.Card-->
+
+
+
+
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-4 mb-4">
+
+
+
+                    <!--Card : Dynamic content wrapper-->
+                    <div class="card mb-4 text-center wow fadeIn">
+
+                        <div class="card-header">유저매칭을 위해 입력해주세요!</div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!-- Default form login -->
+                            <form method="POST" action="/duo">
+
+                                <!-- Default input email -->
+                                
+                                <label for="defaultFormEmailEx" class="grey-text">제목</label>
+                                <input type="text" name="title" id="defaultFormLoginEmailEx" class="form-control">
+                                <br>
+                                <!-- select -->
+                              <!-- select 
+                                <select class="browser-default custom-select" name="matching_line_select1">
+                                    <option selected>주 라인</option>
+                                    <option name = 'line' value="탑">탑</option>
+                                    <option name = 'line' value="정글">정글</option>
+                                    <option name = 'line' value="미드">미드</option>
+                                    <option name = 'line' value="원딜">원딜</option>
+                                    <option name = 'line' value="서포터">서포터</option>
+                                    <option name = 'line' value="올라">올라이너</option>
+                                </select>
+                                
+
+                                <select class="browser-default custom-select" name="matching_line_select2">
+                                  <option selected>티어</option>
+                                  <option name = 'teer' value="아이언">아이언</option>
+                                  <option name = 'teer' value="브론즈">브론즈</option>
+                                  <option name = 'teer' value="실버">실버</option>
+                                  <option name = 'teer' value="골드">골드</option>
+                                  <option name = 'teer' value="플레">플래티넘</option>
+                                  <option name = 'teer' value="다이아">다이아</option>
+                                  <option name = 'teer' value="마스터">마스터</option>
+                                  <option name = 'teer' value="그마">그랜드 마스터</option>
+                                  
+                                </select>
+                               
+
+                               <select class="browser-default custom-select" name="matching_line_select3">
+                                <option selected>성별</option>
+                                <option name = 'gender' value="1">남성</option>
+                                <option name = 'gender' value="2">여성</option>
+                               </select>
+                               
+
+                               
+
+                               <select class="browser-default custom-select" name="matching_line_select4">
+                                <option selected>마이크 사용 여부</option>
+                                <option name = 'mic' value="1">사용</option>
+                                <option name = 'mic' value="2">미 사용</option>
+                            </select>
+                            
+                            -->
+                                <hr>
+                                <!-- Default input email -->
+                                <label for="defaultFormEmailEx" class="grey-text">내용</label>
+                                <input type="text" name="content" id="defaultFormLoginEmailEx" class="form-control">
+
+                                <br>
+
+
+                                <hr>
+
+                                <hr>
+
+                                
+                                <div class="text-center mt-4">
+                                  <input type="submit" name='submit' value="등록"/>
+                                  
+                              </div>
+                            </form>
+                            <!-- Default form login -->
+
+                        </div>
+
+                    </div>
+                    <!--/.Card : Dynamic content wrapper-->
+
+
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </section>
+        <!--Section: Post-->
+
+    </div>
+</main>
+
+
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>DEMACIA</h3>
+              <p>
+                부산 해운대구 센텀중앙로 55, <br>
+                경남정보대학교<br><br>
+                <strong>Phone:</strong> +051 020 0430<br>
+                <strong>Email:</strong> demacia@naver.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Main Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">듀오매칭</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">아이템 거래소</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">전적 검색</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">커뮤니티</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">관련 서비스 링크 예시</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>해시태그</h4>
+            <p>원하는 단어로 간편하게 검색을 할 수 있는 <br>해시태그 검색창 예시용</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; <strong><span>DEMACIA</span></strong>, 예시용 사이트
+
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+        Designed by <a href="https://bootstrapmade.com/">DEMACIA</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/vendor/venobox/venobox.min.js"></script>
+  <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+
+</body>
+
+</html>

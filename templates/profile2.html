@@ -1,0 +1,205 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <style>
+            .one{
+                display: inline-block;
+                width: 90px;
+                height: 90px;
+                background-color: #f1f1f1;
+                margin: 10px;
+            }
+            
+          
+            img{
+                width: 90px;
+                height: 0.5;
+            }
+            
+            .one::before{
+                content: "";
+                position: absolute;
+                width: 120%;
+                height: 120%;
+                background: #3498db;
+                transform: rotate(45deg);
+                left: -110%;
+                top: 90%;
+            }
+            input:checked + label img{
+                border: 2px solid yellow;
+                background-color: yellow;
+            }
+            input[type="checkbox"]{
+                position: relative;
+                width: 100px;
+                height:  40px;
+                -webkit-appearance: none;
+                background: #c6c6c6;
+                outline: none;
+                border-radius:  20px;
+                box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+                transition: .5s;
+            }
+            input:checked[type="checkbox"]{
+                background: #03a9f4;
+            }
+            input[type="checkbox"]:before{
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                top: 0;
+                left: 0;
+                background: #fff;
+                transform: scale(1.1);
+                box-shadow: 0 2px 5px rgba(0,0,0,.2);
+                transition: .5s;
+            }
+            input:checked[type="checkbox"]:before{
+                left: 60px;
+            }
+        
+    </style>
+<meta http-equiv="Content-Type" content="text/html" charset= "UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write something else you want</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ 
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+<table class="table table-bordered">
+    <thead>
+        <caption> 프로필 작성 </caption>
+    </thead>
+    <tbody>
+        <form action="/pro" method="POST" encType="multiplart/form-data">
+            <tr>
+                <th>닉네임 </th>
+                <td><input type="text" placeholder="LOL 닉네임 입력" name = 'pnickname'/></td>
+            </tr>
+            <tr>
+                <th>티어: </th>
+                <td>
+                    <input type="radio" id="one" name="teer" value='아이언'>
+                    <lable for="image" name = "iron">
+                        <img src="static/아이언.png" >
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='브론즈'>
+                    <lable for="image" name = "bronze">
+                        <img src="static/브론즈.png" >
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='실버'>
+                    <lable for="image">
+                        <img src="static/실버.png" name = "silver">
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='골드'>
+                    <lable for="image">
+                        <img src="static/골드.png" name = "gold">
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='플레'>
+                    <lable for="image">
+                        <img src="static/플레.png" name = "ple">
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='다이아'>
+                    <lable for="image">
+                        <img src="static/다이아.png" name = "diamond">
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='마스터'>
+                    <lable for="image">
+                        <img src="static/마스터.png" name = "master">
+                    </lable>
+                    <input type="radio" id="one" name="teer" value='그마'>
+                    <lable for="image">
+                        <img src="static/그마.png" name = "gma">
+                    </lable>
+                    
+                   </td>
+            </tr>
+            <tr>
+                <th>라인: </th>
+                <td> <div class='middle'>
+                    <input type="radio" id="one" name="line" value='탑'>
+                    <lable for="image">
+                        <img src="static/탑.png">
+                    </lable>
+                    <input type="radio" id="one" name="line" value='정글'>
+                    <lable for="image">
+                        <img src="static/전글.png">
+                    </lable>
+                    <input type="radio" id="one" name="line" value='정글'>
+                    <lable for="imagee">
+                        <img src="static/미드.png">
+                    </lable>
+                    <input type="radio" id="one" name="line" value='원딜'>
+                    <lable for="image">
+                        <img src="static/원딜.png">
+                    </lable>
+                    <input type="radio" id="one" name="line" value='서폿'>
+                    <lable for="image">
+                        <img src="static/서폿.png">
+                    </lable>
+                    </div></td>
+            </tr>
+            <tr>
+                <th>모스트  챔피언: </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>성별: </th>
+                <td>
+                    <input type="radio" id="one" name="gender" value='남'>
+                    <lable for="image">
+                        <img src="static/남자.png">
+                    </lable>
+                    <input type="radio" id="one" name="gender" value='여'>
+                    <lable for="image">
+                        <img src="static/여자.png">
+                    </lable>
+                   
+                </td>
+            </tr>
+            <tr>
+                <th>마이크 가능/불가능: </th>
+                <td>
+                    <input type="radio" id="a" name="mic" value='o'>
+                    <lable for="image">
+                        <img src="static/mic.png">
+                    </lable>
+                    <input type="radio" id="a" name="mic" value='x'>
+                    <lable for="image">
+                        <img src="static/nomic.png">
+                    </lable>
+                </td>
+                
+             
+            </tr>
+            <tr>
+                <th>플레이 시간대: </th>
+                <td><input type="text" placeholder="플레이 시간대: 요일,시간,플레이시간" name = 'ptime'/></td>
+            </tr>
+           
+         
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name='submit_button' value="등록"/>
+                    <input type="button" value="뒤로 " onclick="javascript:location.href='index.html'"/>
+                </td>
+            </tr>
+        </form>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
+
+
